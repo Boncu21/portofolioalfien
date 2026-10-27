@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Muhamad Alfien Siena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            /* Tema Hitam, Putih, Biru */
+            --primary: #2563eb;       /* Biru */
+            --primary-hover: #1d4ed8; /* Biru Gelap */
+            --bg-main: #000000;       /* Hitam */
+            --bg-card: #121212;       /* Kelabu Sangat Gelap (untuk kad) */
+            --text-main: #ffffff;     /* Putih */
+            --text-muted: #d1d5db;    /* Putih Pudar */
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.2);
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+        
+        nav h1 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #000000 0%, rgba(37,99,235,0.15) 100%);
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-muted);
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            background: var(--primary);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+        }
+
+        /* Mengubah latar selang-seli untuk pemisahan visual */
+        .bg-alt {
+            background-color: #0a0a0a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Cards Container */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+            color: var(--text-muted);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .card h3 {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 i {
+            color: var(--primary);
+        }
+
+        .card strong {
+            color: var(--text-main);
+        }
+
+        /* Timeline (Roadmap) */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: var(--bg-main);
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+
+        .right::after { left: -10px; }
+
+        .timeline-content {
+            padding: 20px;
+            background: var(--bg-card);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            color: var(--text-muted);
+            border: 1px solid #222;
+        }
+
+        .timeline-content h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content strong {
+            color: var(--text-main);
+        }
+
+        /* Checkbox List */
+        .habit-list {
+            list-style: none;
+        }
+        
+        .habit-list li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .habit-list i {
+            color: var(--primary); /* Diubah ke biru */
+            font-size: 1.2rem;
+        }
+
+        /* List biasa */
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #050505;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #222;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            nav ul { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .right { left: 0; }
+        }
+
+        /* Reveal Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav>
+        <h1>ALFIEN.</h1>
+        <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#potensi">Potensi</a></li>
+            <li><a href="#tujuan">Tujuan</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header / Beranda -->
+    <header id="beranda">
+        <div class="hero-content reveal active">
+            <p>Langkah Awal Menuju Masa Depan yang Lebih Baik</p>
+            <h1>Halo, Saya <br><span>Muhamad Alfien Siena</span></h1>
+            <p>Mahasiswa Sistem Informasi Angkatan 2026. Berkomitmen untuk belajar konsisten dan mengembangkan diri di dunia teknologi.</p>
+            <a href="#profil" class="btn">Mulai Jelajahi</a>
+        </div>
+    </header>
+
+    <!-- Profil Section -->
+    <section id="profil">
+        <h2 class="section-title reveal">Kenali Diriku</h2>
+        <div class="grid-container reveal">
+            <div class="card">
+                <h3><i class="fas fa-user-graduate"></i> Identitas</h3>
+                <p><strong>Program Studi:</strong> Sistem Informasi</p>
+                <p><strong>Tahun Masuk:</strong> 2026</p>
+                <p><strong>Asal Sekolah:</strong> SMA Negeri 14 Palembang</p>
+                <p><strong>Hobi/Minat:</strong> Traveling</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-heart"></i> Kebiasaan Baik</h3>
+                <ul class="habit-list">
+                    <li><i class="fas fa-check-circle"></i> Mengatur waktu dengan baik</li>
+                    <li><i class="fas fa-check-circle"></i> Aktif dalam perkuliahan</li>
+                    <li><i class="fas fa-check-circle"></i> Belajar secara rutin</li>
+                    <li><i class="fas fa-check-circle"></i> Menjaga kesehatan & berani mencoba hal baru</li>
+                    <li><i class="fas fa-check-circle"></i> Membangun relasi positif</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Potensi & Pengembangan (Latar Belakang Gelap Selang-Seli) -->
+    <section id="potensi" class="bg-alt">
+        <h2 class="section-title reveal">Potensi & Pengembangan Diri</h2>
+        <div class="grid-container reveal">
+            <div class="card">
+                <h3><i class="fas fa-bolt"></i> Kekuatan Saya</h3>
+                <ul>
+                    <li>Memiliki rasa ingin tahu yang tinggi.</li>
+                    <li>Mudah beradaptasi dengan lingkungan baru.</li>
+                    <li>Mampu memanajemen waktu.</li>
+                    <li>Memiliki kemauan keras untuk belajar dan berkembang.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-seedling"></i> Ingin Dikembangkan</h3>
+                <ul>
+                    <li>Belajar public speaking.</li>
+                    <li>Belajar lebih dalam mengenai dunia teknologi.</li>
+                    <li>Meningkatkan kemampuan manajemen waktu agar lebih baik.</li>
+                    <li>Mencari dan mengumpulkan pengalaman sebanyak mungkin.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tujuan Utama -->
+    <section id="tujuan">
+        <h2 class="section-title reveal">Tujuan Utama Saya</h2>
+        <div class="grid-container reveal">
+            <div class="card">
+                <h3><i class="fas fa-book-open"></i> Akademik & Keterampilan</h3>
+                <p>Meraih IPK yang tinggi, lulus tepat waktu, dan menguasai berbagai keterampilan di bidang teknologi informasi.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-users"></i> Relasi & Pengalaman</h3>
+                <p>Memperbanyak relasi pertemanan, aktif mengikuti organisasi, UKM, serta berbagai kegiatan kampus yang membangun.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-briefcase"></i> Karier & Pengembangan</h3>
+                <p>Membangun usaha sendiri terkait bidang Sistem Informasi, serta terus melatih kedisiplinan dan manajemen waktu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap / Perjalanan Kuliah -->
+    <section id="roadmap" class="bg-alt">
+        <h2 class="section-title reveal">Roadmap Perjalanan Kuliah</h2>
+        <div class="timeline reveal">
+            
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h2>Semester 1 & 2</h2>
+                    <p><strong>Fokus:</strong> Adaptasi & Dasar</p>
+                    <p>Beradaptasi dengan dunia kuliah, memahami dasar SI & logika, belajar dasar pemrograman. Aktif ikut kegiatan kampus dan mencari relasi teman serta dosen.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h2>Semester 3 & 4</h2>
+                    <p><strong>Fokus:</strong> Pendalaman Sistem</p>
+                    <p>Mempelajari basis data & SQL, pendalaman analisis sistem, serta mengerjakan proyek SI sederhana. Mulai melatih presentasi dan menyusun portofolio awal.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h2>Semester 5 & 6</h2>
+                    <p><strong>Fokus:</strong> Peminatan & Lapangan</p>
+                    <p>Memilih peminatan bidang IT, mendalami UI/UX, dan mengikuti magang/MBKM di lapangan. Membangun relasi industri dan memperbarui portofolio.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h2>Semester 7 & 8</h2>
+                    <p><strong>Fokus:</strong> Tugas Akhir & Kelulusan</p>
+                    <p>Fokus mengumpulkan data penelitian, bimbingan rutin dosen untuk Tugas Akhir. Siapkan lamaran kerja, revisi sidang, dan target lulus tepat waktu.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Komitmen -->
+    <section id="komitmen">
+        <div class="grid-container reveal" style="max-width: 800px; margin: auto;">
+            <!-- Warna sempadan kad ditukar ke biru selari dengan tema -->
+            <div class="card" style="text-align: center; border-top: 4px solid var(--primary);">
+                <h3><i class="fas fa-handshake"></i> Refleksi & Komitmen</h3>
+                <p style="font-style: italic; font-size: 1.1rem; margin-top: 15px; color: var(--text-main);">
+                    "Saya berkomitmen untuk: Belajar secara konsisten, aktif mengikuti perkuliahan, menyelesaikan tugas tepat waktu, serta terus mengembangkan keterampilan di bidang Sistem Informasi. <br><br>Setiap kesulitan adalah bagian dari proses belajar. Tetap sabar, terus berusaha, dan jangan ragu untuk bertanya jika menemui kendala."
+                </p>
+                <p style="margin-top: 20px; font-weight: bold; color: var(--primary);">- Muhamad Alfien Siena, Palembang 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Muhamad Alfien Siena - Mahasiswa Sistem Informasi. Hak Cipta Terpelihara.</p>
+    </footer>
+
+    <!-- JavaScript Animasi Scroll -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger saat pertama kali dimuat
+        reveal();
+    </script>
+</body>
+</html>
